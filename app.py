@@ -17,9 +17,14 @@ st.title("Medical Chatbot")
 PINECONE_API_KEY=os.environ.get('PINECONE_API_KEY')
 GEMINI_API_KEY=os.environ.get('GEMINI_API_KEY')
 
-os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
-os.environ["GEMINI_API_KEY"] = GEMINI_API_KEY
+# os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
+# os.environ["GEMINI_API_KEY"] = GEMINI_API_KEY
 
+if not PINECONE_API_KEY:
+    st.error("Missing PINECONE_API_KEY in Streamlit Secrets")
+if not GEMINI_API_KEY:
+    st.error("Missing GEMINI_API_KEY in Streamlit Secrets")
+    
 embeddings = download_embedding()
 
 
