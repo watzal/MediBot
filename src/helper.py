@@ -28,5 +28,5 @@ def chunk_docs(filtered_data: List[Document]):
 
 def download_embedding():
     model_name = "sentence-transformers/all-MiniLM-L6-v2"
-    embedding = HuggingFaceEmbeddings(model_name=model_name)
+    embedding = HuggingFaceEmbeddings(model_name=model_name,model_kwargs={"device": "cpu"} )
     return embedding
