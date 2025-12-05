@@ -3,7 +3,9 @@ from typing import List
 from langchain.schema import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 import os
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 
 # os.chdir('../')
 
@@ -28,5 +30,5 @@ def chunk_docs(filtered_data: List[Document]):
 
 def download_embedding():
     model_name = "sentence-transformers/all-MiniLM-L6-v2"
-    embedding = HuggingFaceEmbeddings(model_name=model_name,model_kwargs={"device": "cpu"},encode_kwargs={"normalize_embeddings": False})
+    embedding = HuggingFaceEndpointEmbeddings(model=model_name,huggingfacehub_api_token= os.getenv("HUGGINGFACE_KEY"))
     return embedding
