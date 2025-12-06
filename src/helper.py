@@ -5,6 +5,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_huggingface import HuggingFaceEndpointEmbeddings
 import os
+import streamlit as st
 from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 
 # os.chdir('../')
@@ -30,5 +31,5 @@ def chunk_docs(filtered_data: List[Document]):
 
 def download_embedding():
     model_name = "sentence-transformers/all-MiniLM-L6-v2"
-    embedding = HuggingFaceEndpointEmbeddings(model=model_name,huggingfacehub_api_token= os.getenv("HUGGINGFACE_KEY"))
+    embedding = HuggingFaceEndpointEmbeddings(model=model_name,huggingfacehub_api_token= st.secrets["HUGGINGFACE_KEY"])
     return embedding

@@ -16,8 +16,8 @@ load_dotenv()
 
 st.title("Medical Chatbot")
 
-PINECONE_API_KEY=os.environ.get('PINECONE_API_KEY')
-GEMINI_API_KEY=os.environ.get('GEMINI_API_KEY')
+PINECONE_API_KEY=st.secrets['PINECONE_API_KEY']
+GEMINI_API_KEY=st.secrets['GEMINI_API_KEY']
 
 # os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
 # os.environ["GEMINI_API_KEY"] = GEMINI_API_KEY
